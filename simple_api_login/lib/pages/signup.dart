@@ -3,6 +3,7 @@ import 'package:simple_api_login/components/input_box.dart';
 import 'package:simple_api_login/components/mouse_cursor.dart';
 import 'package:simple_api_login/components/responsive_widget.dart';
 import 'package:simple_api_login/pages/login.dart';
+import 'package:simple_api_login/util/services/auth_services.dart';
 import 'package:simple_api_login/util/validations.dart';
 
 class CreateAccount extends StatefulWidget {
@@ -25,7 +26,7 @@ class _CreateAccountState extends State<CreateAccount> {
   FocusNode confirmPassFN = FocusNode();
 
 
-  submitForm(){
+  submitForm() async{
     FormState form = formKey.currentState;
     form.save();
     if (!form.validate()) {
@@ -34,7 +35,18 @@ class _CreateAccountState extends State<CreateAccount> {
       });
       showInSnackBar("Please fix the errors in red before submitting.");
     } else {
+      setState(() {
+        loading = true;
+      });
 
+      String msg = await AuthServices()
+          .registerUser(email, fName, lName, password);
+
+      showInSnackBar(msg);
+
+      setState(() {
+        loading = false;
+      });
     }
   }
 
@@ -210,7 +222,9 @@ class _CreateAccountState extends State<CreateAccount> {
                       Container(
                         width: 150,
                         height: 50,
-                        child: MouseCursor(
+                        child: loading
+                            ? Center(child: CircularProgressIndicator())
+                            : MouseCursor(
                           child: FlatButton(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(

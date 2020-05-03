@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_api_login/components/input_box.dart';
 import 'package:simple_api_login/components/mouse_cursor.dart';
 import 'package:simple_api_login/components/responsive_widget.dart';
+import 'package:simple_api_login/util/services/auth_services.dart';
 import 'package:simple_api_login/util/validations.dart';
 
 class Login extends StatefulWidget {
@@ -21,7 +22,7 @@ class _LoginState extends State<Login> {
   FocusNode passFN = FocusNode();
 
 
-  submitForm(){
+  submitForm() async{
     FormState form = formKey.currentState;
     form.save();
     if (!form.validate()) {
@@ -30,7 +31,18 @@ class _LoginState extends State<Login> {
       });
       showInSnackBar("Please fix the errors in red before submitting.");
     } else {
+      setState(() {
+        loading = true;
+      });
 
+      String msg = await AuthServices()
+          .loginUser(email, password);
+
+      showInSnackBar(msg);
+
+      setState(() {
+        loading = false;
+      });
     }
   }
 
@@ -148,7 +160,9 @@ class _LoginState extends State<Login> {
                       Container(
                         width: 150,
                         height: 50,
-                        child: MouseCursor(
+                        child: loading
+                            ? Center(child: CircularProgressIndicator())
+                            : MouseCursor(
                           child: FlatButton(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
