@@ -146,7 +146,7 @@ class _LoginState extends State<Login> {
                     children: <Widget>[
                       MouseCursor(
                         child: GestureDetector(
-                          onTap: ()=>Navigator.pop(context),
+                          onTap: loading?null:()=>Navigator.pop(context),
                           child: Text(
                             "No account? Sign Up",
                             style: TextStyle(

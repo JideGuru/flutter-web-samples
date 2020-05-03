@@ -199,7 +199,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     children: <Widget>[
                       MouseCursor(
                         child: GestureDetector(
-                          onTap: (){
+                          onTap: loading?null:(){
                             Navigator.push(
                               context,
                               MaterialPageRoute(
