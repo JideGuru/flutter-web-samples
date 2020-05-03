@@ -36,7 +36,11 @@ class _LoginState extends State<Login> {
       });
 
       String msg = await AuthServices()
-          .loginUser(email, password);
+          .loginUser(email, password).catchError((e){
+        setState(() {
+          loading = false;
+        });
+      });
 
       showInSnackBar(msg);
 

@@ -40,7 +40,11 @@ class _CreateAccountState extends State<CreateAccount> {
       });
 
       String msg = await AuthServices()
-          .registerUser(email, fName, lName, password);
+          .registerUser(email, fName, lName, password).catchError((e){
+        setState(() {
+          loading = false;
+        });
+      });
 
       showInSnackBar(msg);
 

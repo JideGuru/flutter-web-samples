@@ -14,7 +14,7 @@ class AuthServices extends Services{
       throw(e);
     });
     print(res.body);
-
+    print(res.statusCode);
     if(res.statusCode == 200){
       Map json = jsonDecode(res.body);
       return "Welcome back ${json['user']['firstName']}";
@@ -34,8 +34,8 @@ class AuthServices extends Services{
     var res = await http.post(
       registerURL,
       body: {
-        "firstName": fName,
-        "lastName": lName,
+        "firstname": fName,
+        "lastname": lName,
         "email": email,
         "password": password,
       },
