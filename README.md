@@ -7,4 +7,4 @@ You can follow me on twitter [@iamjideguru](https://twitter.com/iamjideguru)
 ## Examples
 | Simple API Login|
 |-----------------|
-|<img src="screenshots/simple_api_login.png" width="400">|
+|<img src="screenshots/simple_api_login.png">|
