@@ -7,4 +7,4 @@ You can follow me on twitter [@iamjideguru](https://twitter.com/iamjideguru)
 ## Examples
 | Simple API Login [View Demo](https://flutter-test-apps.web.app)|
 |-----------------|
-|<img src="screenshots/simple_api_login.png">|
+|<img src="screenshots/simple-login.gif">|
