@@ -42,6 +42,7 @@ class _LoginState extends State<Login> {
         });
       });
 
+      print(msg);
       showInSnackBar(msg);
 
       setState(() {

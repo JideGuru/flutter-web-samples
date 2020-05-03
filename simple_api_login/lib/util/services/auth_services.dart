@@ -16,8 +16,9 @@ class AuthServices extends Services{
     print(res.body);
     print(res.statusCode);
     if(res.statusCode == 200){
+      print("ghdhg");
       Map json = jsonDecode(res.body);
-      return "Welcome back ${json['user']['firstName']}";
+      return "${json['message']}";
     }else{
       String msg = "";
       if(res.body.contains("html")){
