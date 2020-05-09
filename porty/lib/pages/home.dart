@@ -416,6 +416,8 @@ class _HomeState extends State<Home> {
             height: 150.0,
             width: 150.0,
             child: GridView.builder(
+              primary: false,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: Constants.social.length,
               itemBuilder: (BuildContext context, int index) {
                 Map socialItem = Constants.social[index];
@@ -493,6 +495,8 @@ class _HomeState extends State<Home> {
             height: 100.0,
             width: 100.0,
             child: GridView.builder(
+              primary: false,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: Constants.social.length,
               itemBuilder: (BuildContext context, int index) {
                 Map socialItem = Constants.social[index];
